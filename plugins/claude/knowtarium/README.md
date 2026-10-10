@@ -16,38 +16,51 @@ On Claude Code 2.1.275 or later, one line does both:
 `/plugin install knowtarium --marketplace Knowtarium/knowtarium-plugins`. From a shell (Claude
 Code 2.1.292 or later): `claude plugin install knowtarium --marketplace Knowtarium/knowtarium-plugins`.
 
-Then connect this computer once: run `npx knowtarium connect` in a terminal, or ask Claude to
-connect Knowtarium. Either way your browser opens, you sign in and approve this computer, and no
-password, token or key goes in Claude's settings. You need Node.js 20 or later.
+Then connect this computer once: ask Claude to connect Knowtarium, or run
+`npx knowtarium connect --no-agents` in a terminal (the plugin already adds the server). Either way
+your browser opens, you sign in and approve this computer, and no password, token or key goes in
+Claude's settings. You need Node.js 20 or later.
+
+If you ran `npx knowtarium connect` with knowtarium 0.1.2 or earlier, Claude Code has a Knowtarium
+entry of its own too. Run `npx knowtarium@latest agents` once to bring it up to date (older
+versions ran npx in the project folder), or run `claude mcp remove --scope user knowtarium` to keep
+only the plugin's.
 
 ## What it adds
 
 - **The `knowtarium` MCP server**: the tools Claude uses to search, read, write and check notes.
-- **The `knowtarium-conventions` skill**: how a Knowtarium workspace works, how Claude's changes
+- **A skill for working in a Knowtarium workspace** (`knowtarium-conventions`): how it works, how Claude's changes
   land, and how to check a person's edit.
 
 ## What it runs, sends and stores
 
-- **It runs** `node ${CLAUDE_PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.1.2 mcp` (see
-  `.mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.1.2 mcp`
-  (through `cmd /c` on Windows): npx downloads
+- **It runs** `node ${CLAUDE_PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.1.3 mcp` (see
+  `.mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.1.3 mcp`
+  from your home folder, never the project folder (so nothing a project plants in
+  `node_modules` or `.npmrc` runs instead), through Windows' own `cmd.exe` on Windows: npx downloads
   the open source [`knowtarium`](https://www.npmjs.com/package/knowtarium) package at exactly
-  version 0.1.2, with the dependency versions its shrinkwrap pins, from your npm registry, and
+  version 0.1.3, with the dependency versions its shrinkwrap pins, from your npm registry, and
   starts its MCP server on stdio. Its source is at https://github.com/Knowtarium/knowtarium-sdk.
 - **It talks** only to the Knowtarium sync API at `api.knowtarium.com`. Note text, file and folder
   names, comments and history are encrypted on this computer before they're sent, and decrypted
-  only here (XChaCha20-Poly1305 with libsodium); the API sees only IDs, versions, sizes and
-  timing. Connecting opens `app.knowtarium.com` in your browser so you can approve this computer.
+  only here (XChaCha20-Poly1305 with libsodium). The API never sees note content or names: it sees
+  IDs and how they nest, versions, sizes, timestamps, signatures and public keys, your account
+  email, and which agent changed what (the full list: https://knowtarium.com/security). Connecting
+  opens `app.knowtarium.com` in your browser so you can approve this computer.
 - **It stores** the connection, encrypted, in your app data folder, with its key in the OS
   keychain (or, where there is none, in a file only you can read), and an encrypted local copy of
   your notes.
+- **On Windows**, Claude Code looks for the `node` above in the project folder first, so a
+  `node.exe` placed in a project you open would start instead of Node.js. For the hardened setup on
+  Windows, use `npx knowtarium agents` instead of this plugin: the entry it writes names `cmd.exe`
+  by its full path and runs npx from your home folder.
 - **People stay in charge**: Claude's changes are signed as its own and can be undone, folders can
-  ask for approval first, and Claude can't delete notes or mark a note as verified by a person.
+  ask for approval first, and Claude can't delete notes or mark a note as checked by a person.
   Note text, comments and diffs reach Claude as data to read, never as instructions to follow.
 
 ## Versions
 
-Plugin version 0.1.2 runs `knowtarium` 0.1.2: each release of the plugin pins the
+Plugin version 0.1.3 runs `knowtarium` 0.1.3: each release of the plugin pins the
 release of the package it was tested with. To update, refresh the marketplace, then the plugin, and
 restart Claude Code:
 
@@ -62,6 +75,7 @@ does the same.
 ## Links
 
 - [Privacy policy](https://knowtarium.com/privacy)
+- [Security](https://knowtarium.com/security)
 - [Terms](https://knowtarium.com/terms)
 - [Source code](https://github.com/Knowtarium/knowtarium-sdk)
 - [Report a problem](https://github.com/Knowtarium/knowtarium-sdk/issues) or write to support@knowtarium.com
