@@ -1,0 +1,20 @@
+{
+  "name": "knowtarium",
+  "interface": {
+    "displayName": "Knowtarium"
+  },
+  "plugins": [
+    {
+      "name": "knowtarium",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex/knowtarium"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

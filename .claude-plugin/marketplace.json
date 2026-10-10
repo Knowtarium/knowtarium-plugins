@@ -1,0 +1,17 @@
+{
+  "name": "knowtarium",
+  "owner": {
+    "name": "Knowtarium",
+    "email": "support@knowtarium.com",
+    "url": "https://knowtarium.com"
+  },
+  "description": "Knowtarium: your end-to-end encrypted knowledge base in Claude Code",
+  "plugins": [
+    {
+      "name": "knowtarium",
+      "source": "./plugins/claude/knowtarium",
+      "description": "Your Knowtarium knowledge base in Claude: search, read and write notes (or propose changes where a folder asks for approval), and check a person's edits against connected notes. End-to-end encrypted.",
+      "category": "productivity"
+    }
+  ]
+}

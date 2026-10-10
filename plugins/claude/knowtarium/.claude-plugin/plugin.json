@@ -1,0 +1,27 @@
+{
+  "name": "knowtarium",
+  "displayName": "Knowtarium",
+  "version": "0.1.2",
+  "description": "Your Knowtarium knowledge base in Claude: search, read and write notes (or propose changes where a folder asks for approval), and check a person's edits against connected notes. End-to-end encrypted.",
+  "author": {
+    "name": "Knowtarium",
+    "email": "support@knowtarium.com",
+    "url": "https://knowtarium.com"
+  },
+  "homepage": "https://knowtarium.com",
+  "repository": "https://github.com/Knowtarium/knowtarium-sdk",
+  "license": "MIT",
+  "keywords": [
+    "knowledge-base",
+    "notes",
+    "okf",
+    "mcp",
+    "verification",
+    "encryption"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://github.com/Knowtarium/knowtarium-plugins#readme",
+  "supportUrl": "https://github.com/Knowtarium/knowtarium-sdk/issues",
+  "privacyPolicyUrl": "https://knowtarium.com/privacy",
+  "termsOfServiceUrl": "https://knowtarium.com/terms"
+}
