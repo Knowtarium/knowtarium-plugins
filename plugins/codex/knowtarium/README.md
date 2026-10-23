@@ -33,12 +33,12 @@ remove `[mcp_servers.knowtarium]` from `~/.codex/config.toml` to use the plugin'
 
 ## What it runs, sends and stores
 
-- **It runs** `node ${PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.2.0 mcp` (see
-  `mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.2.0 mcp`
+- **It runs** `node ${PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.3.0 mcp` (see
+  `mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.3.0 mcp`
   from your home folder, never the project folder (so nothing a project plants in
   `node_modules` or `.npmrc` runs instead), through Windows' own `cmd.exe` on Windows: npx downloads
   the open source [`knowtarium`](https://www.npmjs.com/package/knowtarium) package at exactly
-  version 0.2.0, with the dependency versions its shrinkwrap pins, from your npm registry, and
+  version 0.3.0, with the dependency versions its shrinkwrap pins, from your npm registry, and
   starts its MCP server on stdio. Its source is at https://github.com/Knowtarium/knowtarium-sdk.
 - **It talks** only to the Knowtarium sync API at `api.knowtarium.com`. Note text, file and folder
   names, comments and history are encrypted on this computer before they're sent, and decrypted
@@ -57,7 +57,7 @@ remove `[mcp_servers.knowtarium]` from `~/.codex/config.toml` to use the plugin'
 
 ## Versions
 
-Plugin version 0.2.0 runs `knowtarium` 0.2.0: each release of the plugin pins the
+Plugin version 0.3.0 runs `knowtarium` 0.3.0: each release of the plugin pins the
 release of the package it was tested with. To update, refresh the marketplace, then add the plugin
 again, which installs the new version:
 
