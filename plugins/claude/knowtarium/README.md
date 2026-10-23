@@ -17,14 +17,14 @@ On Claude Code 2.1.275 or later, one line does both:
 Code 2.1.292 or later): `claude plugin install knowtarium --marketplace Knowtarium/knowtarium-plugins`.
 
 Then connect this computer once: ask Claude to connect Knowtarium, or run
-`npx knowtarium connect --no-agents` in a terminal (the plugin already adds the server). Either way
-your browser opens, you sign in and approve this computer, and no password, token or key goes in
-Claude's settings. You need Node.js 20 or later.
+`npx knowtarium connect --no-agents` in a terminal, from your home folder (the plugin already adds
+the server). Either way your browser opens, you sign in and approve this computer, and no password,
+token or key goes in Claude's settings. You need Node.js 20 or later.
 
 If you ran `npx knowtarium connect` with knowtarium 0.1.2 or earlier, Claude Code has a Knowtarium
-entry of its own too. Run `npx knowtarium@latest agents` once to bring it up to date (older
-versions ran npx in the project folder), or run `claude mcp remove --scope user knowtarium` to keep
-only the plugin's.
+entry of its own too. Run `npx knowtarium@latest agents` once, from your home folder, to bring it up
+to date (older versions ran npx in the project folder), or run
+`claude mcp remove --scope user knowtarium` to keep only the plugin's.
 
 ## What it adds
 
@@ -34,12 +34,12 @@ only the plugin's.
 
 ## What it runs, sends and stores
 
-- **It runs** `node ${CLAUDE_PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.1.3 mcp` (see
-  `.mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.1.3 mcp`
+- **It runs** `node ${CLAUDE_PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.2.0 mcp` (see
+  `.mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.2.0 mcp`
   from your home folder, never the project folder (so nothing a project plants in
   `node_modules` or `.npmrc` runs instead), through Windows' own `cmd.exe` on Windows: npx downloads
   the open source [`knowtarium`](https://www.npmjs.com/package/knowtarium) package at exactly
-  version 0.1.3, with the dependency versions its shrinkwrap pins, from your npm registry, and
+  version 0.2.0, with the dependency versions its shrinkwrap pins, from your npm registry, and
   starts its MCP server on stdio. Its source is at https://github.com/Knowtarium/knowtarium-sdk.
 - **It talks** only to the Knowtarium sync API at `api.knowtarium.com`. Note text, file and folder
   names, comments and history are encrypted on this computer before they're sent, and decrypted
@@ -54,15 +54,15 @@ only the plugin's.
   your notes.
 - **On Windows**, Claude Code looks for the `node` above in the project folder first, so a
   `node.exe` placed in a project you open would start instead of Node.js. For the hardened setup on
-  Windows, use `npx knowtarium agents` instead of this plugin: the entry it writes names `cmd.exe`
-  by its full path and runs npx from your home folder.
+  Windows, run `npx knowtarium agents` from your home folder instead of using this plugin: the
+  entry it writes names `cmd.exe` by its full path and runs npx from your home folder too.
 - **People stay in charge**: Claude's changes are signed as its own and can be undone, folders can
   ask for approval first, and Claude can't delete notes or mark a note as checked by a person.
   Note text, comments and diffs reach Claude as data to read, never as instructions to follow.
 
 ## Versions
 
-Plugin version 0.1.3 runs `knowtarium` 0.1.3: each release of the plugin pins the
+Plugin version 0.2.0 runs `knowtarium` 0.2.0: each release of the plugin pins the
 release of the package it was tested with. To update, refresh the marketplace, then the plugin, and
 restart Claude Code:
 

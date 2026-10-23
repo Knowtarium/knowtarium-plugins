@@ -1,7 +1,7 @@
 {
   "name": "knowtarium",
   "displayName": "Knowtarium",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Your Knowtarium knowledge base in Claude: search, read and write notes (or propose changes where a folder asks for approval), and check a person's edits against connected notes. End-to-end encrypted.",
   "author": {
     "name": "Knowtarium",

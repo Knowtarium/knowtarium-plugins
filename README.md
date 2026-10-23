@@ -32,12 +32,12 @@ Knowtarium from the `knowtarium` marketplace.
 **Claude Desktop** runs the Knowtarium extension instead, which needs no terminal or Node.js:
 download [knowtarium.mcpb](https://github.com/Knowtarium/knowtarium-sdk/releases/latest/download/knowtarium.mcpb), open it, then ask Claude to connect Knowtarium.
 
-**Other agents**, such as Cursor and OpenCode: run `npx knowtarium connect` in a terminal. It
-connects this computer and adds Knowtarium to the agents it finds.
+**Other agents**, such as Cursor and OpenCode: run `npx knowtarium connect` in a terminal, from
+your home folder. It connects this computer and adds Knowtarium to the agents it finds.
 
 After installing a plugin, connect this computer once: ask your agent to connect Knowtarium, or run
-`npx knowtarium connect --no-agents` in a terminal (the plugin already adds the server, and adding
-it again would run it twice). Your browser opens, you sign in and approve this computer, and no
+`npx knowtarium connect --no-agents` in a terminal, from your home folder (the plugin already adds
+the server, and adding it again would run it twice). Your browser opens, you sign in and approve this computer, and no
 password, token or key goes in your agent's settings. The plugins need Node.js 20 or later.
 
 ## What the plugins run, send and store
@@ -45,16 +45,16 @@ password, token or key goes in your agent's settings. The plugins need Node.js 2
 Both plugins hold the same two things: a skill for working in a Knowtarium workspace
 (`knowtarium-conventions`) and the `knowtarium` MCP server.
 
-- **They run** a small launcher in the plugin, `node server/launch.mjs -y knowtarium@0.1.3 mcp`
+- **They run** a small launcher in the plugin, `node server/launch.mjs -y knowtarium@0.2.0 mcp`
   (the arguments are in the plugin's `.mcp.json` or `mcp.json`), which runs
-  `npx -y knowtarium@0.1.3 mcp` from your home folder, never the project folder (so nothing a
+  `npx -y knowtarium@0.2.0 mcp` from your home folder, never the project folder (so nothing a
   project plants in `node_modules` or `.npmrc` runs instead): npx downloads the open source
   [`knowtarium`](https://www.npmjs.com/package/knowtarium) package at exactly that version, with the
   dependency versions its shrinkwrap pins, and starts its MCP server on stdio. Its source is at
   https://github.com/Knowtarium/knowtarium-sdk.
 - **On Windows**, Claude Code looks for the plugin's `node` in the project folder first, so a
   `node.exe` placed in a project you open would start instead of Node.js. For the hardened setup
-  there, use `npx knowtarium agents` instead of the Claude Code plugin.
+  there, run `npx knowtarium agents` from your home folder instead of using the Claude Code plugin.
 - **They talk** only to the Knowtarium sync API at `api.knowtarium.com`. Note text, file and folder
   names, comments and history are encrypted on your computer before they're sent, and decrypted
   only there. The API never sees note content or names: it sees IDs and how they nest, versions,
@@ -69,7 +69,7 @@ Both plugins hold the same two things: a skill for working in a Knowtarium works
 ## Versions
 
 Every plugin version pins the `knowtarium` release it was tested with: this marketplace is at
-0.1.3. A new release changes the version. Updating the marketplace only refreshes the
+0.2.0. A new release changes the version. Updating the marketplace only refreshes the
 listing; then update the plugin itself, and restart the agent:
 
 ```sh
