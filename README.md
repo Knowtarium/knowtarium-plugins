@@ -45,9 +45,9 @@ password, token or key goes in your agent's settings. The plugins need Node.js 2
 Both plugins hold the same two things: a skill for working in a Knowtarium workspace
 (`knowtarium-conventions`) and the `knowtarium` MCP server.
 
-- **They run** a small launcher in the plugin, `node server/launch.mjs -y knowtarium@0.3.0 mcp`
+- **They run** a small launcher in the plugin, `node server/launch.mjs -y knowtarium@0.3.1 mcp`
   (the arguments are in the plugin's `.mcp.json` or `mcp.json`), which runs
-  `npx -y knowtarium@0.3.0 mcp` from your home folder, never the project folder (so nothing a
+  `npx -y knowtarium@0.3.1 mcp` from your home folder, never the project folder (so nothing a
   project plants in `node_modules` or `.npmrc` runs instead): npx downloads the open source
   [`knowtarium`](https://www.npmjs.com/package/knowtarium) package at exactly that version, with the
   dependency versions its shrinkwrap pins, and starts its MCP server on stdio. Its source is at
@@ -69,7 +69,7 @@ Both plugins hold the same two things: a skill for working in a Knowtarium works
 ## Versions
 
 Every plugin version pins the `knowtarium` release it was tested with: this marketplace is at
-0.3.0. A new release changes the version. Updating the marketplace only refreshes the
+0.3.1. A new release changes the version. Updating the marketplace only refreshes the
 listing; then update the plugin itself, and restart the agent:
 
 ```sh

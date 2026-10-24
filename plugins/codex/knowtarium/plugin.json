@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "knowtarium",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Your Knowtarium knowledge base in your agent: search, read and write notes (or propose changes where a folder asks for approval), and check a person's edits against connected notes. End-to-end encrypted.",
   "author": {
     "name": "Knowtarium",
