@@ -33,12 +33,12 @@ remove `[mcp_servers.knowtarium]` from `~/.codex/config.toml` to use the plugin'
 
 ## What it runs, sends and stores
 
-- **It runs** `node ${PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.4.0 mcp` (see
-  `mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.4.0 mcp`
+- **It runs** `node ${PLUGIN_ROOT}/server/launch.mjs -y knowtarium@0.5.0 mcp` (see
+  `mcp.json`). The launcher, a small script in this plugin, runs `npx -y knowtarium@0.5.0 mcp`
   from your home folder, never the project folder (so nothing a project plants in
   `node_modules` or `.npmrc` runs instead), through Windows' own `cmd.exe` on Windows: npx downloads
   the open source [`knowtarium`](https://www.npmjs.com/package/knowtarium) package at exactly
-  version 0.4.0, with the dependency versions its shrinkwrap pins, from your npm registry, and
+  version 0.5.0, with the dependency versions its shrinkwrap pins, from your npm registry, and
   starts its MCP server on stdio. Its source is at https://github.com/Knowtarium/knowtarium-sdk.
 - **It talks** only to the Knowtarium sync API at `api.knowtarium.com`. Note text, file and folder
   names, comments and history are encrypted on this computer before they're sent, and decrypted
@@ -52,12 +52,16 @@ remove `[mcp_servers.knowtarium]` from `~/.codex/config.toml` to use the plugin'
   keychain (or, where there is none, in a file only you can read), and an encrypted local copy of
   your notes.
 - **People stay in charge**: Codex's changes are signed as its own and can be undone, folders can
-  ask for approval first, and Codex can't delete notes or mark a note as checked by a person.
-  Note text, comments and diffs reach Codex as data to read, never as instructions to follow.
+  ask for approval first, and Codex can delete or move notes and create, rename, move or delete
+  folders only with the permissions you give it (each change signed and undoable). Codex can't
+  delete files or mark a note as checked by a person.
+  Note text is data, never instructions: notes, comments and diffs reach Codex as data to read.
+  Only you direct Codex, in your conversation and through the instructions you apply in a
+  folder's `AGENTS.md` in Knowtarium; Codex can only propose changes to those.
 
 ## Versions
 
-Plugin version 0.4.0 runs `knowtarium` 0.4.0: each release of the plugin pins the
+Plugin version 0.5.0 runs `knowtarium` 0.5.0: each release of the plugin pins the
 release of the package it was tested with. To update, refresh the marketplace, then add the plugin
 again, which installs the new version:
 

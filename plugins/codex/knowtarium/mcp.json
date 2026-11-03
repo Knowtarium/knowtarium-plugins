@@ -7,7 +7,7 @@
       "args": [
         "${PLUGIN_ROOT}/server/launch.mjs",
         "-y",
-        "knowtarium@0.4.0",
+        "knowtarium@0.5.0",
         "mcp"
       ]
     }
